@@ -91,6 +91,8 @@ h1 {
 .project-info {
     display: grid;
     grid-template-rows: 100px 300px 100px;
+    text-align: justify;
+
 }
 .project-title {
     display: flex;
