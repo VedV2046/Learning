@@ -1,0 +1,19 @@
+.header {
+    background-color: rgb(222, 222, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+.redirect-buttons {
+    background: none;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.blog-logo {
+    height: 40px;
+}

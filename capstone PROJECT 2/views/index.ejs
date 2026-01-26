@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <div class="info-container">
+        <div class="info-title">Welcome to BlogWrite</div>
+        <div class="info-description">
+            Your one-stop platform to create, share, and explore amazing blogs with a vibrant community!
+        </div>
+    </div>
+
+        <div class="blog-container">
+            <% if(posts.length > 0) { %>
+                <% posts.forEach(posts => { %>
+                    <div class="post-card">
+                        <div class="blog-title"><%= posts.title %></div>
+                        <div class="author">By <%= posts.author %></div> 
+                        <div class="author">on <%= posts.date %> </div>
+                        <p><%= posts.content %>...</p> 
+                        <div class="actions">
+                            <a href="/edit/<%= posts.id %>" class="blog-button">Edit</a>
+                            <a href="/delete/<%= posts.id %>" class="blog-button">Delete</a>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else {%>
+                <p>No Posts Yet. <a class="create" href="/new">Create One!</a></p>
+            <% } %>
+        </div>
+    </div>
+</body>
+<%-include("partials/footer.ejs") %>
+</html>
