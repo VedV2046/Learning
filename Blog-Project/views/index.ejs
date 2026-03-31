@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Stories worth reading.</h1>
+    <p class="hero-subtitle">A space for curious minds — write, share, and explore ideas that matter.</p>
+    <a href="/posts/new" class="hero-cta" id="hero-cta">Start Writing →</a>
+  </div>
+</section>
+<!-- Posts Section -->
+<section class="posts-section" id="posts-section">
+  <div class="section-header">
+    <h2 class="section-title">Recent Posts</h2>
+    <span class="post-count"><%= posts.length %> article<%= posts.length !== 1 ? 's' : '' %></span>
+  </div>
+  <% if (posts.length === 0) { %>
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">📝</div>
+      <h3>No posts yet</h3>
+      <p>Be the first to share something beautiful.</p>
+      <a href="/posts/new" class="btn btn-primary">Create Your First Post</a>
+    </div>
+  <% } else { %>
+    <div class="posts-grid" id="posts-grid">
+      <% posts.forEach((post, i) => { %>
+        <article class="post-card" id="post-card-<%= post.id %>" style="animation-delay: <%= i * 0.08 %>s">
+          <div class="post-card-accent"></div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-author"><%= post.author %></span>
+              <span class="meta-dot">·</span>
+              <time class="post-date"><%= formatDate(post.createdAt) %></time>
+            </div>
+            <h3 class="post-card-title">
+              <a href="/posts/<%= post.id %>"><%= post.title %></a>
+            </h3>
+            <p class="post-card-excerpt"><%= post.content.substring(0, 160) %><%= post.content.length > 160 ? '…' : '' %></p>
+            <div class="post-card-footer">
+              <a href="/posts/<%= post.id %>" class="read-more" id="read-more-<%= post.id %>">Read more →</a>
+              <div class="post-actions">
+                <a href="/posts/<%= post.id %>/edit" class="action-btn edit-btn" id="edit-btn-<%= post.id %>" title="Edit">
+                  ✏️
+                </a>
+                <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" class="delete-form inline-form">
+                  <button type="submit" class="action-btn delete-btn" id="delete-btn-<%= post.id %>" title="Delete">
+                    🗑️
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+<%- include('partials/footer') %>

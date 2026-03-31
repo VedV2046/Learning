@@ -1,0 +1,25 @@
+</main>
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-inner">
+      <p class="footer-text">
+        &copy; <%= new Date().getFullYear() %> <strong>The Daily Quill</strong> &mdash; Crafted with ☕ &amp; curiosity.
+      </p>
+    </div>
+  </footer>
+  <script>
+    // Navbar shadow on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+    // Delete confirmation
+    document.querySelectorAll('.delete-form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        if (!confirm('Are you sure you want to delete this post? This cannot be undone.')) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
